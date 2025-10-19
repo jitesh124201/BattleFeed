@@ -98,35 +98,41 @@ struct UserListView: View {
     
     @ViewBuilder
     private func eachListOfUser() -> some View {
-        ForEach(userListViewModel.filterUserList, id: \.id) { data in
-            NavigationLink(value: data) {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("User ID:- \(data.userID)")
-                            .font(.system(size: 16))
-                            .foregroundColor(.black)
+        if !userListViewModel.filterUserList.isEmpty {
+            ForEach(userListViewModel.filterUserList, id: \.id) { data in
+                NavigationLink(value: data) {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("User ID:- \(data.userID)")
+                                .font(.system(size: 16))
+                                .foregroundColor(.black)
+                            
+                            Text(data.title)
+                                .font(.system(size: 16))
+                                .foregroundColor(.black)
+                                .multilineTextAlignment(.leading)
+                            
+                        }
                         
-                        Text(data.title)
-                            .font(.system(size: 16))
-                            .foregroundColor(.black)
-                            .multilineTextAlignment(.leading)
+                        Spacer()
                         
+                        Button {
+                            userListViewModel.toggleFavourite(user: data)
+                        } label: {
+                            Image(systemName: userListViewModel.isFav(user: data) ? "heart.fill" : "heart")
+                                .foregroundColor(.pink)
+                        }
                     }
-                    
-                    Spacer()
-                    
-                    Button {
-                        userListViewModel.toggleFavourite(user: data)
-                    } label: {
-                        Image(systemName: userListViewModel.isFav(user: data) ? "heart.fill" : "heart")
-                            .foregroundColor(.pink)
-                    }
+                    .padding()
+                    .background(Color.purple.opacity(0.2))
+                    .cornerRadius(12)
+                    .padding(.vertical,7)
                 }
-                .padding()
-                .background(Color.purple.opacity(0.2))
-                .cornerRadius(12)
-                .padding(.vertical,7)
             }
+        } else {
+            Text("No Text Found!!!")
+                .foregroundColor(.red)
+                .multilineTextAlignment(.center)
         }
     }
     
