@@ -43,11 +43,6 @@ class UserListViewModel: ObservableObject {
         favUserList.contains(where: { $0.id == user.id })
     }
     
-    // It check if user is marked as fav in main list
-    func isFavorite(user: UserFeed) -> Bool {
-        usersList.first(where: { $0.id == user.id })?.isFav ?? false
-    }
-    
     // toggle the fav state of a row
     func toggleFavourite(user: UserFeed) {
         if let index = favUserList.firstIndex(where: { $0.id == user.id }) {
