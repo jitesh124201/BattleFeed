@@ -16,7 +16,7 @@
 - Custom TabView for switching between Feed and Favorites.
 
 ## Setup Instructions
-- Clone the repository: git clone https://github.com/<your-username>/BattleFeed.git
+- Clone the repository: git clone [https://github.com/<your-username>/BattleFeed.git](https://github.com/jitesh124201/BattleFeed.git)
 - Open the project in Xcode: Navigate to the cloned folder Double-click BattleFeed.xcodeproj or open Xcode → File → Open → select BattleFeed.xcodeproj.
 - Check your Xcode version: Make sure you are using Xcode 15 or later The project targets iOS 17.6+
 - Build and run the app: Select a simulator (e.g., iPhone 15) or a physical iOS device and press run
